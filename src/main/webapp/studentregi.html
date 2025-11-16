@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            background: #f3f7ff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 450px;
+            background: white;
+            margin: 40px auto;
+            padding: 25px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 15px;
+            color: #333;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0 15px 0;
+            border: 1px solid #888;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="radio"], input[type="checkbox"]{
+            width: auto;
+            margin-right: 5px;
+        }
+        .btn-container {
+            text-align: center;
+        }
+        input[type="submit"], input[type="reset"] {
+            width: 120px;
+            padding: 10px;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"] {
+            background: #007bff;
+        }
+        input[type="submit"]:hover {
+            background: #0056b3;
+        }
+        input[type="reset"] {
+            background: #d9534f;
+        }
+        input[type="reset"]:hover {
+            background: #a94442;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>Student Registration Form</h2>
+
+    <form action="InsertStudentServlet" method="post">
+        <label>Full Name:</label>
+        <input type="text" name="fullname" required>
+
+        <label>Age:</label>
+        <input type="number" name="age" required>
+
+        <label>Select Course:</label>
+        <select name="course">
+            <option value="">-- Select Course --</option>
+            <option>C Programming</option>
+            <option>C++</option>
+            <option>Core Java</option>
+            <option>Advanced Java</option>
+            <option>Python</option>
+        </select>
+
+
+        <label>Gender:</label><br>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <input type="radio" name="gender" value="Other"> Other
+        <br><br>
+
+
+        <label>Hobbies:</label><br>
+        <input type="checkbox" name="hobby" value="Reading"> Reading
+        <input type="checkbox" name="hobby" value="Music"> Music
+        <input type="checkbox" name="hobby" value="Sports"> Sports
+        <input type="checkbox" name="hobby" value="Coding"> Coding
+        <br><br>
+
+
+        <label>Date of Birth:</label>
+        <input type="date" name="dob" required>
+
+        <label>Email ID:</label>
+        <input type="email" name="email" required>
+
+        <label>Mobile Number:</label>
+        <input type="tel" name="mobile" required>
+
+        <label>Address:</label>
+        <textarea name="address" rows="3"></textarea>
+
+
+        <div class="btn-container">
+            <input type="submit" value="Register">
+            <input type="reset" value="Clear">
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>

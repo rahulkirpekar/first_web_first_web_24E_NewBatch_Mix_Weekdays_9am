@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+	<servlet>
+		<servlet-name>xyz</servlet-name>
+		<servlet-class>com.royal.controller.FirstServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>xyz</servlet-name>
+		<url-pattern>/abc</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SecondServlet</servlet-name>
+		<servlet-class>com.royal.controller.SecondServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SecondServlet</servlet-name>	
+		<url-pattern>/ganesh</url-pattern>
+	</servlet-mapping>	
+
+
+	<servlet>
+		<servlet-name>DiamondWithDifColorServlet</servlet-name>
+		<servlet-class>com.royal.controller.DiamondWithDifColorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DiamondWithDifColorServlet</servlet-name>	
+		<url-pattern>/diamond</url-pattern>
+	</servlet-mapping>	
+	
+	<servlet>
+		<servlet-name>ThirdServlet</servlet-name>
+		<servlet-class>com.royal.controller.ThirdServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ThirdServlet</servlet-name>	
+		<url-pattern>/thirdServlet</url-pattern>
+	</servlet-mapping>	
+
+
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.royal.controller.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>	
+		<url-pattern>/loginServlet</url-pattern>
+	</servlet-mapping>	
+
+	<servlet>
+		<servlet-name>FourthRequestHeaderNameServlet</servlet-name>
+		<servlet-class>com.royal.controller.FourthRequestHeaderNameServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FourthRequestHeaderNameServlet</servlet-name>	
+		<url-pattern>/headerName</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InsertStudentServlet</servlet-name>
+		<servlet-class>com.royal.controller.InsertStudentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InsertStudentServlet</servlet-name>	
+		<url-pattern>/InsertStudentServlet</url-pattern>
+	</servlet-mapping>
+	
+</web-app>
+

@@ -1,0 +1,14 @@
+Servlet:- WebTechnology---->WebApplication
+----------
+
+	Javaclass
+	  |
+	Servlet(MyServlet)(request,response)-->----run--->WebServer	
+	  |
+     HttpServlet(AC)-----[servlet-api.jar]---[tomcat--lib--*]
+	  |
+    GenericServlet(AC)
+	  |
+	Servlet(I)	
+	
+   
