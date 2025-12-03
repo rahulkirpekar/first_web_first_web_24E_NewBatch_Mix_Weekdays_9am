@@ -6,9 +6,47 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+	<context-param>
+		<param-name>lang1</param-name>
+		<param-value>C Language</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>lang2</param-name>
+		<param-value>C++ Language</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>lang3</param-name>
+		<param-value>Python Language</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>lang4</param-name>
+		<param-value>Java Language</param-value>
+	</context-param>
+
+
 	<servlet>
 		<servlet-name>xyz</servlet-name>
 		<servlet-class>com.royal.controller.FirstServlet</servlet-class>
+		
+		<init-param>
+			<param-name>URLNAME</param-name>
+			<param-value>jdbc:mysql://localhost:3306/test</param-value>
+		</init-param>
+		<init-param>
+			<param-name>DRIVERCLASS</param-name>
+			<param-value>com.mysql.cj.jdbc.Driver</param-value>
+		</init-param>
+		<init-param>
+			<param-name>USERNAME</param-name>
+			<param-value>root</param-value>
+		</init-param>
+		<init-param>
+			<param-name>PASSWORD</param-name>
+			<param-value>root</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>xyz</servlet-name>
@@ -18,6 +56,23 @@
 	<servlet>
 		<servlet-name>SecondServlet</servlet-name>
 		<servlet-class>com.royal.controller.SecondServlet</servlet-class>
+		
+		<init-param>
+			<param-name>URLNAME</param-name>
+			<param-value>jdbc:mysql://localhost:3306/test</param-value>
+		</init-param>
+		<init-param>
+			<param-name>DRIVERCLASS</param-name>
+			<param-value>com.mysql.cj.jdbc.Driver</param-value>
+		</init-param>
+		<init-param>
+			<param-name>USERNAME</param-name>
+			<param-value>root</param-value>
+		</init-param>
+		<init-param>
+			<param-name>PASSWORD</param-name>
+			<param-value>root</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>SecondServlet</servlet-name>	
@@ -42,6 +97,17 @@
 		<servlet-name>ThirdServlet</servlet-name>	
 		<url-pattern>/thirdServlet</url-pattern>
 	</servlet-mapping>	
+
+
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>com.royal.controller.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>	
+		<url-pattern>/logoutServlet</url-pattern>
+	</servlet-mapping>	
+
 
 
 	<servlet>
@@ -71,6 +137,17 @@
 		<servlet-name>InsertStudentServlet</servlet-name>	
 		<url-pattern>/InsertStudentServlet</url-pattern>
 	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>SearchGoogleServlet</servlet-name>
+		<servlet-class>com.royal.controller.SearchGoogleServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchGoogleServlet</servlet-name>	
+		<url-pattern>/SearchGoogleServlet</url-pattern>
+	</servlet-mapping>
+	
 	
 </web-app>
 

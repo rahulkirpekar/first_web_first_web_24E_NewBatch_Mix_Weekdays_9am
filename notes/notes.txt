@@ -11,4 +11,50 @@ Servlet:- WebTechnology---->WebApplication
 	  |
 	Servlet(I)	
 	
-   
+ ---------------------------------------------------------------------
+ 
+ Attributes in Servlet[Data Sharing Scope]:-
+--------------------------------------------
+Scope:-
+--------
+	2.request(HttpServletRequest)
+	3.session(HttpSession)
+	4.Application(ServletContext)
+------------------------------------------------------
+	1. scope.setAttribute(String key,Object value);
+	2. Object value = scope.getAttribute(String key);
+	3. scope.removeAttribute(String key);
+
+
+
+
+
+1. page(Single Page)
+
+
+	2. request :-
+	------------	
+	  FirstServlet (request,response)
+	  ---------------
+		1. request.setAttribute(String key,Object value);
+
+		RequestDispatcher rd = request.getRequestDispatcher("SecondServlet");
+		rd.forward(request,response);
+		  -------------------------------
+				|
+	  SecondServlet (request,response):-
+	 -----------------------------------
+		2. Object value = request.getAttribute(String key);
+		
+	3. session
+	4. application
+
+
+				WebApplication
+|-------------------------------------------------------------------------------|
+
+		
+	FirstServlet-------------->SecondServlet-------------->ThirdServlet
+
+				
+  
