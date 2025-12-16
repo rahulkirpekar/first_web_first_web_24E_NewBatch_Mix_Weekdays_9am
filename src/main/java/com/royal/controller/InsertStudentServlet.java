@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import com.royal.bean.StudentBean;
+import com.royal.util.StringUtils;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -22,76 +24,123 @@ public class InsertStudentServlet extends HttpServlet
 		response.setContentType("text/html");
 		
 		String  fullname= request.getParameter("fullname");
-		int  age     = Integer.parseInt(request.getParameter("age"));
+		String  ageStr     = request.getParameter("age");
 		String  course  = request.getParameter("course");
 		String  gender  = request.getParameter("gender");
 		String  hobbies[]   = request.getParameterValues("hobby");
 		
-		for (int i = 0; i < hobbies.length; i++) 
-		{
-			System.out.println("hobbies["+i+"] : " + hobbies[i]);
-		}
+//		for (int i = 0; i < hobbies.length; i++) 
+//		{
+//			System.out.println("hobbies["+i+"] : " + hobbies[i]);
+//		}
 		
 		String  dob     = request.getParameter("dob");
 		String  email   = request.getParameter("email");
 		String  mobile  = request.getParameter("mobile");
 		String  address = request.getParameter("address");
- 
-		PrintWriter out = 	response.getWriter();
-		
-		out.print("<br>");
-		
-		id = id+1;
-		
-		StudentBean s = new StudentBean(id, fullname, age, course, gender, hobbies, dob, email, mobile, address);
-		
-		list.add(s);
-		
-		out.print("<table border='1'>");
-		out.print("	<tr>                    ");
-		out.print("		<td>Id</td>         ");
-		out.print("		<td>FullName</td>   ");
-		out.print("		<td>Age</td>        ");
-		out.print("		<td>Course</td>     ");
-		out.print("		<td>Gender</td>     ");
-		out.print("		<td>Hobbies</td>    ");
-		out.print("		<td>DOB</td>        ");
-		out.print("		<td>Email</td>      ");
-		out.print("		<td>Mobile</td>     ");
-		out.print("		<td>Address</td>    ");
-		out.print("	</tr>                   ");
 
-		for(int i = 0 ;i < list.size();i++) 
+		// Backend Validation
+		
+		StudentBean sbean = new StudentBean();
+		
+		boolean flag = false;
+		
+		if(StringUtils.isValidString(fullname)) 
 		{
-			s = list.get(i);
-			out.print("	<tr>                    ");
-			out.print("		<td>"+s.getId()+"</td>           ");
-			out.print("		<td>"+s.getFullname()+"</td>           ");
-			out.print("		<td>"+s.getAge()+"</td>           ");
-			out.print("		<td>"+s.getCourse()+"</td>           ");
-			out.print("		<td>"+s.getGender()+"</td>           ");
-			
-			String h[] = s.getHobbies();
-			
-			String hobbiesValue = "";
-			for (int j = 0 ; j < h.length;j++) 
-			{
-				if(j < (h.length-1)) 
-				{
-					hobbiesValue = hobbiesValue + h[j] +",";
-				}else 
-				{
-					hobbiesValue = hobbiesValue + h[j] +".";
-				}
-			}
-			out.print("		<td>"+hobbiesValue+"</td>           ");
-			out.print("		<td>"+s.getDob()+"</td>           ");
-			out.print("		<td>"+s.getEmail()+"</td>           ");
-			out.print("		<td>"+s.getMobile()+"</td>           ");
-			out.print("		<td>"+s.getAddress()+"</td>           ");
-			out.print("	</tr>                   ");
+			sbean.setFullname(fullname);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("fullnameError", "<font color='red'>Please enter valid FullName.</font>");
 		}
-		out.print("</table>					");
+		
+		if(StringUtils.isValidString(ageStr)) 
+		{
+			sbean.setAge(Integer.parseInt(ageStr));
+		}else 
+		{
+			flag = true;
+			request.setAttribute("ageError", "<font color='red'>Please enter valid Age.</font>");
+		}
+		
+		if(StringUtils.isValidString(course)) 
+		{
+			sbean.setCourse(course);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("courseError", "<font color='red'>Please enter valid Course.</font>");
+		}
+		
+		
+		if(StringUtils.isValidString(gender)) 
+		{
+			sbean.setGender(gender);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("genderError", "<font color='red'>Please enter valid Gender.</font>");
+		}		
+		
+		if(hobbies != null) 
+		{
+			sbean.setHobbies(hobbies);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("hobbiesError", "<font color='red'>Please enter valid Hobbies.</font>");
+		}		
+		
+		
+		if(StringUtils.isValidString(dob)) 
+		{
+			sbean.setDob(dob);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("dobError", "<font color='red'>Please enter valid DOB.</font>");
+		}	
+		
+		if(StringUtils.isValidString(email)) 
+		{
+			sbean.setEmail(email);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("emailError", "<font color='red'>Please enter valid Email.</font>");
+		}	
+		  
+
+		if(StringUtils.isValidString(mobile)) 
+		{
+			sbean.setMobile(mobile);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("mobileError", "<font color='red'>Please enter valid Mobile.</font>");
+		}	
+		 
+		if(StringUtils.isValidString(address)) 
+		{
+			sbean.setAddress(address);
+		}else 
+		{
+			flag = true;
+			request.setAttribute("addressError", "<font color='red'>Please enter valid Address.</font>");
+		}
+		
+		request.setAttribute("sbean", sbean);
+		
+		RequestDispatcher rd = null;
+		if(flag) 
+		{
+			rd = request.getRequestDispatcher("studentregi.jsp");
+			
+		}else 
+		{
+			rd = request.getRequestDispatcher("ListStudentServlet");
+		}
+		rd.forward(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

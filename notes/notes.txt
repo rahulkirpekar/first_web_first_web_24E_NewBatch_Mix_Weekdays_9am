@@ -58,3 +58,66 @@ Scope:-
 
 				
   
+  
+  
+  Jsp--Java server Pages
+---------------------------
+
+	servlet----[90% JavaCode + 10% htmlcode] = Code complexity
+	  |
+	 Jsp-------[90% HtmlCode + 10% Java Code]
+
+
+	Servlet-------->Jsp
+
+Jsp:-
+-------
+	home.jsp--->convert Servlet Java File
+		    --------------------------
+				|
+			  home_jsp.java--(Servlet)	
+		    --------------------------
+				|
+			  home_jsp.class--(Servlet)	
+		    --------------------------
+				|
+			       run
+		    --------------------------
+				|
+			      output	
+
+1. convert into servlet java file(home_jsp.java)
+2. compilation process of Servlet file(home_jsp.class)
+3. run(home_jsp.class)
+4. output
+
+
+
+1. _jspInit()
+
+2. _jspService()
+
+3. _jspDestroy()
+	
+
+
+
+Scripting Elements:-
+--------------------
+	1. Scriptlet tag:-
+	--------------------
+
+
+
+
+	2. expression tag:-
+	--------------------
+service--->
+	out.print(10+20);
+
+	<%=10+20%>
+
+
+
+	3. declaration tag:-
+	--------------------

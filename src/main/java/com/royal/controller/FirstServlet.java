@@ -17,6 +17,13 @@ public class FirstServlet extends HttpServlet
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+//		Attributes(Data Sharing Scope):-
+//		------------------------------------------
+//			1.page(Single Page)---this
+//			2.request(Servlet to Servlet)--(HttpServeltContext)
+//			3.session(HttpSession)
+//			4.application(ServletContext)
+//		---------------------------------------------------------------------------------
 		Student s= new Student(1, "Rahul Kirpekar", 12);
 		
 		// SESSION SCOPE
