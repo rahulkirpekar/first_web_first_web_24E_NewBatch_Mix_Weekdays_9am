@@ -1,9 +1,10 @@
 package com.royal.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
+
 import com.royal.bean.StudentBean;
+import com.royal.dao.StudentDao;
 import com.royal.util.StringUtils;
 
 import jakarta.servlet.RequestDispatcher;
@@ -138,7 +139,20 @@ public class InsertStudentServlet extends HttpServlet
 			
 		}else 
 		{
-			rd = request.getRequestDispatcher("ListStudentServlet");
+			StudentDao dao = new StudentDao();
+			
+			int rowsAffected = dao.insertStudent(sbean);
+			
+			if(rowsAffected > 0) 
+			{
+				rd = request.getRequestDispatcher("ListStudentServlet");
+				
+			}else 
+			{
+				request.setAttribute("dberror", "<font color='red'>Database ServerDown</font>");
+				rd = request.getRequestDispatcher("studentregi.jsp");
+			}
+			
 		}
 		rd.forward(request, response);
 	}

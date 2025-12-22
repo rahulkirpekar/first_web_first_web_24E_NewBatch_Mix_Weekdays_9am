@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Registration Form</title>
+	${dberror}
+    <title>Student Registration Form</title> 
     <style>
         body {
             background: #f3f7ff;

@@ -31,11 +31,6 @@ public class StudentBean
 		this.address = address;
 	}
 
-
-	
-
-
-
 	public Integer getId() {
 		return id;
 	}
