@@ -54,17 +54,80 @@ public class StudentDao
 		}
 		return rowsAffected;
 	}
-	public void getStudentByid(int id) 
+	public StudentBean getStudentByid(int id) 
 	{
+		String selectQuery = "SELECT * FROM students WHERE id = "+id;
+		Connection conn = DBConnection.getConnection();
+		Statement stmt = null;
+		
+		ResultSet rs = null;
+		StudentBean sbean = new StudentBean();
+		if (conn != null) 
+		{
+			try 
+			{
+				stmt = conn.createStatement();
+				
+				rs = stmt.executeQuery(selectQuery);
 
+				rs.next() ;
+				
+				int id1 = rs.getInt(1);
+				String fullname = rs.getString(2);
+				int age = rs.getInt(3);
+				String course = rs.getString(4);
+				String gender = rs.getString(5);
+				
+				String h = rs.getString(6);
+				String hobbies[] = h.split(",");
+				
+				String dob = rs.getString(7);
+				String email = rs.getString(8);
+				String mobile = rs.getString(9);
+				String address = rs.getString(10);
+					
+				sbean  = new StudentBean(id1, fullname, age, course, gender, hobbies, dob, email, mobile, address);
+				
+			} catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		} else 
+		{
+			System.out.println("Db not Connected : " + conn);
+		}
+		return sbean;
 	}
 	public void updateStudent(StudentBean sbean,int id) 
 	{
 
 	}
-	public void deleteStudent(int id) 
+	public int deleteStudent(int id) 
 	{
+		String deleteQuery = "DELETE FROM students WHERE id = " + id;
 
+		System.out.println("deleteQuery : "  +deleteQuery);
+		
+		Connection conn = DBConnection.getConnection();
+		Statement stmt =null;
+		int rowsAffected = 0;
+		if (conn!=null) 
+		{
+			try 
+			{
+				stmt =conn.createStatement();
+				rowsAffected = stmt.executeUpdate(deleteQuery);
+				
+			} catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+		} else 
+		{
+			System.out.println("StudentDao--Db not Connected : " + conn);
+		}
+		
+		return rowsAffected;
 	}
 	public ArrayList<StudentBean> getAllRecords() 
 	{

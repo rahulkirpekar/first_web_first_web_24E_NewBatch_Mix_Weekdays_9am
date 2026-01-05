@@ -90,6 +90,33 @@ Jsp:-
 2. compilation process of Servlet file(home_jsp.class)
 3. run(home_jsp.class)
 4. output
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE student 
+(
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+
+    full_name VARCHAR(100) NOT NULL,
+
+    age INT NOT NULL,
+
+    course VARCHAR(50) NOT NULL,
+
+    gender ENUM('Male', 'Female', 'Other') NOT NULL,
+
+    hobbies SET('Reading', 'Music', 'Sports', 'Coding'),
+
+    date_of_birth DATE NOT NULL,
+
+    email VARCHAR(100) UNIQUE NOT NULL,
+
+    mobile VARCHAR(15) NOT NULL,
+
+    address TEXT,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
