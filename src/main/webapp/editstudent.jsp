@@ -71,6 +71,10 @@
     <h2>Student Registration Form</h2>
 
     <form action="UpdateStudentServlet" method="post">
+    
+    		<label>Student Id:</label>
+        <input type="text" name="id" value="${sbean.id}" readonly="readonly"> 
+    
         <label>Full Name:</label>  ${fullnameError}
         <input type="text" name="fullname" value="${sbean.fullname}" > 
 

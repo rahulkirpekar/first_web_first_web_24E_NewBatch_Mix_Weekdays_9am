@@ -98,9 +98,49 @@ public class StudentDao
 		}
 		return sbean;
 	}
-	public void updateStudent(StudentBean sbean,int id) 
+	public int updateStudent(StudentBean sbean,int id) 
 	{
-
+		
+		String hobby[] = sbean.getHobbies();
+		String hobbies = "";
+		for (int i = 0; i < hobby.length; i++) 
+		{
+			if(i < hobby.length-1) 
+			{
+				hobbies = hobbies.concat(hobby[i]+",");
+			}else 
+			{
+				hobbies = hobbies.concat(hobby[i]);
+			}
+		}
+		System.out.println("hobbies : " + hobbies);
+		
+		String updateQuery = "UPDATE students SET fullname='"+sbean.getFullname()+"' , age = "+sbean.getAge()+",course='"+sbean.getCourse()+"',gender='"+sbean.getGender()+"',hobbies='"+hobbies+"',dob='"+sbean.getDob()+"',email='"+sbean.getEmail()+"',mobile='"+sbean.getMobile()+"',address='"+sbean.getAddress()+"' WHERE id = "+id;
+		
+		System.out.println("updateQuery : " + updateQuery);
+		
+		Connection conn = DBConnection.getConnection();
+		
+		Statement stmt = null;
+		int rowsAffected = 0;
+		if (conn != null) 
+		{
+			try 
+			{
+				stmt = conn.createStatement();
+			
+				rowsAffected = stmt.executeUpdate(updateQuery);
+			
+			} catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+			
+		} else 
+		{
+			System.out.println("Db not Connected : " + conn);
+		}
+		return rowsAffected;
 	}
 	public int deleteStudent(int id) 
 	{
