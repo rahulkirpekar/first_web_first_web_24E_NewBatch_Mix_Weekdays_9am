@@ -10,31 +10,44 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class EditStudentServlet extends HttpServlet
 {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		int id = Integer.parseInt(request.getParameter("id"));
+		HttpSession session = request.getSession(false);
+		String userName = (String)session.getAttribute("userName");
 		
-		StudentDao dao = new StudentDao();
-
-		StudentBean sbean = dao.getStudentByid(id);
-		
-		RequestDispatcher rd = null;
-		
-		if(sbean == null) 
+		if ( (session == null) || (userName == null))
 		{
-			rd = request.getRequestDispatcher("ListStudentServlet");
+			request.setAttribute("invalidAccess", "<font color ='green'> Invalid Access...!</font>");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 		else 
-		{
-			request.setAttribute("sbean", sbean);
-			rd = request.getRequestDispatcher("editstudent.jsp");			
+		{ 
+				
+			int id = Integer.parseInt(request.getParameter("id"));
+			
+			StudentDao dao = new StudentDao();
+	
+			StudentBean sbean = dao.getStudentByid(id);
+			
+			RequestDispatcher rd = null;
+			
+			if(sbean == null) 
+			{
+				rd = request.getRequestDispatcher("ListStudentServlet");
+			}
+			else 
+			{
+				request.setAttribute("sbean", sbean);
+				rd = request.getRequestDispatcher("editstudent.jsp");			
+			}
+			
+			rd.forward(request, response);
 		}
-		
-		rd.forward(request, response);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

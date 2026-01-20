@@ -10,17 +10,29 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class ListStudentServlet extends HttpServlet
 {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		StudentDao dao = new StudentDao();
-		ArrayList<StudentBean> list = dao.getAllRecords();
+		HttpSession session = request.getSession(false);
+		String userName = (String)session.getAttribute("userName");
 		
-		request.setAttribute("list", list);
-		
-		request.getRequestDispatcher("studlist.jsp").forward(request, response);
+		if ( (session == null) || (userName == null))
+		{
+			request.setAttribute("invalidAccess", "<font color ='green'> Invalid Access...!</font>");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
+		else 
+		{ 
+			StudentDao dao = new StudentDao();
+			ArrayList<StudentBean> list = dao.getAllRecords();
+			
+			request.setAttribute("list", list);
+			
+			request.getRequestDispatcher("studlist.jsp").forward(request, response);
+		}
 	}
 }

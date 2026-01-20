@@ -148,3 +148,61 @@ service--->
 
 	3. declaration tag:-
 	--------------------
+
+	
+	
+	session tracking
+	********************
+	
+	
+session----HttpSession
+
+
+HttpSession session =   request.getSession();
+			request.getSession(false);
+			request.getSession(true);
+
+
+
+<%-- 	Welcome, <%= ((String)session.getAttribute("userName")) %> --%>
+
+Session Tracking:-
+------------------
+
+					 session
+	session --- Duration(login<-------------------->logout)
+
+
+	1. HttpSession
+	2. Cookie
+	3. Hidden form field
+	4. QueryString
+
+
+	Edit | Delete
+
+Table Creation :-
+------------------
+
+INSERT INTO user (email,password) VALUES ('rahul@gmail.com','123');
+				  VALUES ('ankur@gmail.com','abc'), 
+				  VALUES ('sagar@gmail.com','xyz'); 
+
+
+INSERT INTO user (email,password) VALUES ('ankur@gmail.com','abc');
+INSERT INTO user (email,password) VALUES ('sagar@gmail.com','xyz'); 
+ 
+
+CREATE TABLE user
+(
+	id int PRIMARY KEY  AUTO_INCREMENT,
+	email varchar(50),
+	password varchar(50)	
+);
+
+
+	
+	
+	
+	
+	

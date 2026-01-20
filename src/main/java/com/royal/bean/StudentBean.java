@@ -113,15 +113,22 @@ public class StudentBean
 
 	public boolean isHobbySelected(String h) 
 	{
+		System.out.println("isHobbySelected this.hobbies : " + hobbies);
 		if(hobbies == null) 
 		{
+			System.out.println("if hobbies.length : " + hobbies.length);
+
 			return false;
 		}
-		for(int i = 0 ;  i < hobbies.length;i++) 
+		else 
 		{
-			if(hobbies[i].equals(h)) 
+			System.out.println("else hobbies.length : " + hobbies.length);
+			for(int i = 0 ;  i < hobbies.length;i++) 
 			{
-				return true;
+				if(hobbies[i].equals(h)) 
+				{
+					return true;
+				}
 			}
 		}
 		return false;

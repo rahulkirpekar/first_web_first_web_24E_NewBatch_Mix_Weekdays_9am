@@ -68,7 +68,7 @@
 <body>
 
 <div class="container">
-    <h2>Student Registration Form</h2>
+    <h2>Student Registration Form</h2>    <a href='LogoutServlet'>Logout</a>
 
     <form action="UpdateStudentServlet" method="post">
     

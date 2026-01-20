@@ -15,9 +15,17 @@ public class LogoutServlet extends HttpServlet
 	{
 		HttpSession session = request.getSession(false);
 		
-		// session - destroy
-		session.invalidate();
-		
-		System.out.println("User Logout successfully.....!");
+		if(session == null) 
+		{
+			response.sendRedirect("login.jsp");
+		}else 
+		{
+			// session - destroy
+			session.invalidate();
+			
+			request.setAttribute("logoutsuccess", "<font color ='green'> Logout successfully...!</font>");
+			
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
 	}
 }

@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    
+
+    
     <title>Student List</title>
 
     <style>
@@ -99,7 +102,7 @@
 <body>
 
 <div class="container">
-    <h2>Student List</h2>
+    <h2>Student List</h2>    <a href='LogoutServlet'>Logout</a>
 
     <div class="error">
         ${deleteError}

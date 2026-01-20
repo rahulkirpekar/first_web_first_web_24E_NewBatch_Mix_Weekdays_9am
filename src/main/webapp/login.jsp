@@ -5,6 +5,9 @@
 <title>Login Application</title>
 </head>
 <body>
+	<h3>${logoutsuccess}</h3>
+	<h3>${invalidAccess}</h3>
+	
 	<form action="loginServlet" method="post">
 		<table>
 			<tr>

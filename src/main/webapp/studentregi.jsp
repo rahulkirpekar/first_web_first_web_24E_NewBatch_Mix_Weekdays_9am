@@ -66,10 +66,24 @@
 </head>
 
 <body>
+			<form method="post" onsubmit="return confirmLogout();" style="text-align:right;">
+			    <input type="hidden" name="action" value="logout">
+			    <input type="submit" value="Logout"
+			           style="background:#dc3545;color:white;border:none;
+			                  padding:6px 14px;border-radius:4px;cursor:pointer;">
+			</form>
+			
+			<script>
+			function confirmLogout() {
+			    return confirm("Are you sure you want to logout?");
+			}
+			</script>
 
 <div class="container">
-    <h2>Student Registration Form</h2>
+    <h2>Student Registration Form</h2>    <a href='LogoutServlet'>Logout</a>
 
+	
+	Welcome, ${sessionScope.userName}
     <form action="InsertStudentServlet" method="post">
         <label>Full Name:</label>  ${fullnameError}
         <input type="text" name="fullname" value="${sbean.fullname}" > 

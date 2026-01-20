@@ -6,6 +6,15 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+
+
+	<session-config>
+		<session-timeout>20</session-timeout>
+	</session-config>
+
 	<context-param>
 		<param-name>lang1</param-name>
 		<param-value>C Language</param-value>
@@ -185,8 +194,13 @@
 		<url-pattern>/UpdateStudentServlet</url-pattern>
 	</servlet-mapping>
 	
-	
-	
-	
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>com.royal.controller.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/LogoutServlet</url-pattern>
+	</servlet-mapping>
 </web-app>
 
