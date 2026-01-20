@@ -21,7 +21,7 @@ public class DeleteStudentServlet extends HttpServlet
 		
 		if ( (session == null) || (userName == null))
 		{
-			request.setAttribute("invalidAccess", "<font color ='green'> Invalid Access...!</font>");
+			request.setAttribute("invalidAccess", "<font color ='red'> Invalid Access...!</font>");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 		else 
