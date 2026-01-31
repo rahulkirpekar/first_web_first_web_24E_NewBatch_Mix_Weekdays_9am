@@ -140,6 +140,17 @@ function confirmLogout() {
 
 <body>
 
+	<%
+		String userName = (String)session.getAttribute("userName");
+		
+		if ( (session == null) || (userName == null))
+		{
+			request.setAttribute("invalidAccess", "<font color ='red'> Invalid Access...!</font>");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
+	%>
+
+
 <!-- Header -->
 <div class="header">
     <span>Welcome, <b>${sessionScope.userName}</b></span>

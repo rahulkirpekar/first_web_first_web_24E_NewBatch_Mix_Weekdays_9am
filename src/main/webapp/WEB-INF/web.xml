@@ -10,7 +10,6 @@
 		<welcome-file>login.jsp</welcome-file>
 	</welcome-file-list>
 
-
 	<session-config>
 		<session-timeout>20</session-timeout>
 	</session-config>
@@ -202,5 +201,33 @@
 		<servlet-name>LogoutServlet</servlet-name>
 		<url-pattern>/LogoutServlet</url-pattern>
 	</servlet-mapping>
+
+	<listener>
+		<display-name>TestRequestListener</display-name>
+		<listener-class>com.royal.listener.TestRequestListener</listener-class>
+	</listener>
+	
+	<listener>
+		<display-name>TestServletRequestAttributeListener</display-name>
+		<listener-class>com.royal.listener.TestServletRequestAttributeListener</listener-class>
+	</listener>
+
+
+	<listener>
+		<display-name>TestServletSessionListener</display-name>
+		<listener-class>com.royal.listener.TestServletSessionListener</listener-class>
+	</listener>
+
+
+	<filter>
+		<filter-name>TestFilter1</filter-name>
+		<filter-class>com.royal.filter.TestFilter1</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>TestFilter1</filter-name>
+		<url-pattern>/ganesh</url-pattern>
+	</filter-mapping>
+
 </web-app>
 

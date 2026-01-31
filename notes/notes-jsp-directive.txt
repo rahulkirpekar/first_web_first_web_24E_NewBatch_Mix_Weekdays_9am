@@ -1,0 +1,101 @@
+Servlet:-
+----------
+		// MIME
+	response.setContentType("text/html");
+
+Directive in JSP:-
+-----------------
+
+	===> tanslate into specific corrosponding Servlet
+1. page:-
+---------
+	<%@ page attribute="" %>
+
+	<%@ page import="java.util.Date" %>
+	<%@ page contentType="text/html" %>
+	<%@ page info="Home Page" %>
+	<%@ page buffer="SIZE" %>
+	<%@ page language="---" %>
+	<%@ page isELIgnored="true" %>
+	<%@ page isThreadSafe="true" %>
+	<%@ page autoFlush="true" %>
+	<%@ page session="true" %>
+	<%@ page pageEncoding=".." %>
+
+	<%@ page errorPage="error.jsp" %>
+
+
+error.jsp
+	<%@ page isErrorPage="true" %>
+	
+	<%=exception%>
+
+
+
+Attributes:-
+-------------
+	==> import
+	==> contentType
+	==> extends
+	==> info
+	==> buffer
+	==> language
+	==> isELIgnored
+	==>
+	==>
+	==>
+
+
+
+
+
+
+
+	2. include(static include)
+	3. taglib	
+
+
+
+
+
+Scope:-
+-------
+	1.request:-
+	-------------
+Servlet
+		request.setAttribute("sbean",sbean);
+
+list.jsp
+	<%
+		StudentBean s = (StudentBean)request.getAttribute("sbean");// NULL
+	%>	
+
+EL:-
+----
+	${sbean.rno}
+
+
+	2.session
+	3.application
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

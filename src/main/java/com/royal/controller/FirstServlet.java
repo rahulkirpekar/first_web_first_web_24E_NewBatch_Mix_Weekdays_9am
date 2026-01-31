@@ -17,6 +17,9 @@ public class FirstServlet extends HttpServlet
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		System.out.println("====FirstServlet : service(HttpServletRequest request, HttpServletResponse response)====");
+		
+		
 //		Attributes(Data Sharing Scope):-
 //		------------------------------------------
 //			1.page(Single Page)---this
@@ -24,13 +27,13 @@ public class FirstServlet extends HttpServlet
 //			3.session(HttpSession)
 //			4.application(ServletContext)
 //		---------------------------------------------------------------------------------
-		Student s= new Student(1, "Rahul Kirpekar", 12);
+//		Student s= new Student(1, "Rahul Kirpekar", 12);
 		
 		// SESSION SCOPE
 		
-		HttpSession session = request.getSession();
+//		HttpSession session = request.getSession();
 		
-		session.setAttribute("rahulInfo", s);
+//		session.setAttribute("rahulInfo", s);
 
 		// application scope---data store---ServletContext
 //		ServletContext applicationScope = getServletContext();

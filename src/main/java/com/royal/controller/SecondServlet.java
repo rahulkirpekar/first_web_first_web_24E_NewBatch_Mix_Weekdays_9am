@@ -19,16 +19,14 @@ public class SecondServlet extends HttpServlet
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		PrintWriter out = response.getWriter();
+//		PrintWriter out = response.getWriter();
 		
-		HttpSession session = request.getSession(false);
+		System.out.println("====SecondServlet : service(HttpServletRequest request, HttpServletResponse response)====");
 		
-		Student s = (Student)session.getAttribute("rahulInfo");
-
-		out.println("SecondServlet : " + s.getId()+" " + s.getFullname()+" " + s.getAge());
-		
-		
-		session.removeAttribute("rahulInfo");
+//		HttpSession session = request.getSession(false);
+//		Student s = (Student)session.getAttribute("rahulInfo");
+//		out.println("SecondServlet : " + s.getId()+" " + s.getFullname()+" " + s.getAge());
+//		session.removeAttribute("rahulInfo");
 		
 
 //		ServletContext applicationScope = getServletContext();

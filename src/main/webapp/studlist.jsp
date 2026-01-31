@@ -2,6 +2,8 @@
 <%@page import="com.royal.bean.StudentBean"%>
 <%@page import="java.util.ArrayList"%>
 
+<%@page errorPage="error.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -137,6 +139,15 @@ function confirmLogout() {
 </head>
 
 <body>
+	<%
+		String userName = (String)session.getAttribute("userName");
+		
+		if ( (session == null) || (userName == null))
+		{
+			request.setAttribute("invalidAccess", "<font color ='red'> Invalid Access...!</font>");
+			request.getRequestDispatcher("login.jsp").forward(request, response);
+		}
+	%>
 
 <!-- Header -->
 <div class="header">
